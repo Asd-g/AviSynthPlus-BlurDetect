@@ -468,6 +468,8 @@ static AVS_Value AVSC_CC Create_blurdetect(AVS_ScriptEnvironment* env, AVS_Value
         return set_error("BlurDetect: low must be between 0.0..1.0.");
     if (high < 0.0f || high > 1.0f)
         return set_error("BlurDetect: high must be between 0.0..1.0.");
+    if (low > high)
+        return set_error("BlurDetect: low must be less than or equal to high.");
     if (d->radius < 1 || d->radius > 100)
         return set_error("BlurDetect: radius must be between 1..100.");
     if (d->block_pct < 1 || d->block_pct > 100)
